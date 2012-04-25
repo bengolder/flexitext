@@ -7,13 +7,19 @@ class Language(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.code, self.name)
 
-class TextItem(models.model):
+class TextItemName(models.Model):
     name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.name
+
+class TextItem(models.Model):
+    name = models.ForeignKey(TextItemName)
     language = models.ForeignKey(Language)
     content = models.TextField()
     is_markdown = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return '%s (%s)' % (self.name, self.language.code)
+        return '%s (%s)' % (self.name.name, self.language.code)
 
 
