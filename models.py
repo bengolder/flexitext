@@ -13,6 +13,9 @@ class TextItemName(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_depth(self, divider='_'):
+        return len(self.name.split(divider))
+
 class TextItem(models.Model):
     name = models.ForeignKey(TextItemName)
     language = models.ForeignKey(Language)
