@@ -3,7 +3,6 @@ from django.contrib import admin
 
 class TextItemInline(admin.StackedInline):
     model = TextItem
-    extra = 3
 
 class TextItemNameAdmin(admin.ModelAdmin):
     inlines = [TextItemInline]
