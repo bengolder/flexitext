@@ -74,7 +74,3 @@ def text_by_lang(name):
     for t in objs:
         d.append((t.language.code, t.content))
     return {name:d}
-
-
-
-
