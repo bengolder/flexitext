@@ -31,6 +31,22 @@ class TextItem(models.Model):
         return '%s (%s)' % (self.name.name, self.language.code)
 
 
+class MultiChar(models.Model):
+    '''used for multilingual char fields'''
+    def lang(self, lang):
+        return self.charitem__set.filter(language=lang)
+
+class CharItem(models.Model):
+    '''Used for the separate item fields'''
+    thing = models.ForeignKey(MultiChar)
+    language = models.CharField(max_length=8)
+
+
+class MultiText(models.Model):
+    '''Used to split TextFields'''
+    pass
+
+
 ####################################################
 ############### Common model lookups ###############
 ####################################################
